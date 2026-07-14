@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-07-13T02:14:01.036871+00:00",
+  "generation_model": "deepseek-chat",
+  "judge_model": "deepseek-chat",
+  "temperature": 0.2,
+  "positive_samples": 30,
+  "methods": {
+    "zero_shot": {
+      "evaluated_all": 30,
+      "detected_all": 14,
+      "target_detection_rate_all": 0.4666666666666667,
+      "evaluated_core": 29,
+      "detected_core": 14,
+      "target_detection_rate_core": 0.4827586206896552,
+      "total_api_calls": 30,
+      "total_tokens": 14350,
+      "total_latency_seconds": 72.652
+    },
+    "single_step": {
+      "evaluated_all": 30,
+      "detected_all": 28,
+      "target_detection_rate_all": 0.9333333333333333,
+      "evaluated_core": 29,
+      "detected_core": 27,
+      "target_detection_rate_core": 0.9310344827586207,
+      "total_api_calls": 30,
+      "total_tokens": 36223,
+      "total_latency_seconds": 229.389
+    },
+    "three_stage": {
+      "evaluated_all": 30,
+      "detected_all": 24,
+      "target_detection_rate_all": 0.8,
+      "evaluated_core": 29,
+      "detected_core": 24,
+      "target_detection_rate_core": 0.8275862068965517,
+      "total_api_calls": 90,
+      "total_tokens": 91712,
+      "total_latency_seconds": 447.602
+    }
+  },
+  "limitations": [
+    "The dataset contains positive samples only, so precision, false-positive rate, F1, and accuracy cannot be computed.",
+    "This run has one trial per method and does not measure run-to-run variance.",
+    "The automated judge uses a DeepSeek model and should be audited by human reviewers."
+  ]
+}
