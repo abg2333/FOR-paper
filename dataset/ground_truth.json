@@ -1,0 +1,212 @@
+﻿[
+    {
+        "sample_id":  "Sample001",
+        "track":  "security",
+        "label":  "SQL_INJECTION",
+        "expected":  "login concatenates name and pass directly into an SQL statement.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample002",
+        "track":  "security",
+        "label":  "SQL_INJECTION",
+        "expected":  "The LIKE query concatenates xingming directly into SQL.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample003",
+        "track":  "correctness",
+        "label":  "RESOURCE_LEAK",
+        "expected":  "Database resources acquired by selectAll are not closed.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample004",
+        "track":  "correctness",
+        "label":  "SQL_SYNTAX_ERROR",
+        "expected":  "The UPDATE statement is missing a comma between the name and pass assignments.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample005",
+        "track":  "correctness",
+        "label":  "FIELD_MAPPING_ERROR",
+        "expected":  "The xingming and zhuanye values are bound to each other\u0027s parameter positions.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample006",
+        "track":  "security",
+        "label":  "SQL_INJECTION",
+        "expected":  "banji_name is concatenated directly into a LIKE query.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample007",
+        "track":  "correctness",
+        "label":  "RESOURCE_LEAK",
+        "expected":  "Connection, Statement, and ResultSet are not closed.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample008",
+        "track":  "correctness",
+        "label":  "EMPTY_CATCH",
+        "expected":  "SQLException is silently swallowed by an empty catch block.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample009",
+        "track":  "correctness",
+        "label":  "TYPE_MAPPING_ERROR",
+        "expected":  "The textual banji_name column is parsed and assigned as the numeric id.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample010",
+        "track":  "performance",
+        "label":  "REDUNDANT_DATABASE_ACCESS",
+        "expected":  "The method opens a new connection and executes a query once per row instead of using one result set.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample011",
+        "track":  "correctness",
+        "label":  "NULL_DEREFERENCE",
+        "expected":  "op.equals is invoked when the op request parameter may be null.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample012",
+        "track":  "correctness",
+        "label":  "NULL_DEREFERENCE",
+        "expected":  "trim is called on the possibly null xingming request parameter.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample013",
+        "track":  "correctness",
+        "label":  "UNVALIDATED_NUMERIC_CONVERSION",
+        "expected":  "The id request parameter is parsed as an integer without null or format validation.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample014",
+        "track":  "correctness",
+        "label":  "SHARED_MUTABLE_STATE",
+        "expected":  "A mutable StringBuilder field is shared and modified by concurrent servlet requests.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample015",
+        "track":  "correctness",
+        "label":  "RESPONSE_ENCODING_MISSING",
+        "expected":  "Response content type and character encoding are not set before writing text.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample016",
+        "track":  "correctness",
+        "label":  "NULL_DEREFERENCE",
+        "expected":  "trim is called directly on the possibly null banji_name parameter.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample017",
+        "track":  "security",
+        "label":  "MISSING_AUTHORIZATION",
+        "expected":  "The delete operation is executed without the authorization check applied to the add operation.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample018",
+        "track":  "security",
+        "label":  "REFLECTED_XSS",
+        "expected":  "banji_name is written into an HTML response without context-appropriate output encoding.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample019",
+        "track":  "maintainability",
+        "label":  "DEAD_CODE",
+        "expected":  "The block guarded by if (false) is unreachable.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample020",
+        "track":  "correctness",
+        "label":  "INVALID_SERVLET_URL_PATTERN",
+        "expected":  "The servlet URL pattern lacks the required leading slash.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample021",
+        "track":  "security",
+        "label":  "HARDCODED_CREDENTIALS",
+        "expected":  "Database username and password are embedded in source code.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample022",
+        "track":  "maintainability",
+        "label":  "DEPRECATED_API",
+        "expected":  "The legacy com.mysql.jdbc.Driver class is used instead of the Connector/J 8 driver class.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample023",
+        "track":  "security",
+        "label":  "AUTHENTICATION_BYPASS",
+        "expected":  "Execution continues to chain.doFilter after producing the unauthenticated redirect response.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample024",
+        "track":  "security",
+        "label":  "INVALID_FILTER_URL_PATTERN",
+        "expected":  "The filter URL pattern lacks the required leading slash, so the intended resource is not protected.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample025",
+        "track":  "correctness",
+        "label":  "NULL_DEREFERENCE",
+        "expected":  "equals is invoked on request parameters that may be null.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample026",
+        "track":  "security",
+        "label":  "AUTHENTICATION_LOGIC_ERROR",
+        "expected":  "Authentication uses OR, allowing either the username or password check alone to succeed.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample027",
+        "track":  "security",
+        "label":  "UNESCAPED_HTML_OUTPUT",
+        "expected":  "A session attribute is rendered into HTML without output encoding.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample028",
+        "track":  "security",
+        "label":  "SENSITIVE_DATA_IN_URL",
+        "expected":  "The login form submits credentials with GET, exposing them in the URL.",
+        "context_limited":  false
+    },
+    {
+        "sample_id":  "Sample029",
+        "track":  "security",
+        "label":  "MISSING_CSRF_PROTECTION",
+        "expected":  "The login form contains no visible anti-CSRF token; server-side Origin or token validation must also be checked before making a definitive finding.",
+        "context_limited":  true
+    },
+    {
+        "sample_id":  "Sample030",
+        "track":  "maintainability",
+        "label":  "BROKEN_ENCAPSULATION",
+        "expected":  "All domain fields, including the password, are public and directly mutable.",
+        "context_limited":  false
+    }
+]
