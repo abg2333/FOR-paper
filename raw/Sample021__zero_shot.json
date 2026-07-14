@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"Hardcoded database credentials in source code\",\n  \"evidence\": \"private static String username = \\\"root\\\"; private static String password = \\\"123456\\\";\",\n  \"fix_summary\": \"Move database credentials to a secure configuration file (e.g., properties file) or environment variables, and load them at runtime. Avoid storing secrets in plaintext within the codebase.\"\n}",
+      "latency_seconds": 1.762,
+      "usage": {
+        "prompt_tokens": 229,
+        "completion_tokens": 86,
+        "total_tokens": 315
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample021",
+  "source_file": "Sample021.java",
+  "created_at": "2026-07-13T02:09:07.537962+00:00",
+  "temperature": 0.2
+}

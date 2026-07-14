@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"Cross-Site Scripting (XSS) vulnerability via unsanitized user-controlled input in JavaScript context.\",\n  \"evidence\": \"The code directly concatenates `request.getContextPath()` into a JavaScript string without encoding or validation: `String url = \\\"'\\\" + request.getContextPath() + \\\"/login.jsp'\\\";`. If `getContextPath()` contains characters like single quotes or backslashes, an attacker can inject arbitrary JavaScript.\",\n  \"fix_summary\": \"Encode the context path for JavaScript context using `org.owasp.encoder.Encode.forJavaScript` or use a safe redirect method like `response.sendRedirect(request.getContextPath() + \\\"/login.jsp\\\")` instead of writing inline script.\"\n}",
+      "latency_seconds": 2.631,
+      "usage": {
+        "prompt_tokens": 344,
+        "completion_tokens": 158,
+        "total_tokens": 502
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample024",
+  "source_file": "Sample024.java",
+  "created_at": "2026-07-13T02:10:07.803030+00:00",
+  "temperature": 0.2
+}

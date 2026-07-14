@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"SQL injection vulnerability in the 'selectUser' operation\",\n  \"evidence\": \"The method `userDao.seletcUser(xingming)` is called with the user-supplied parameter `xingming` without any sanitization or parameterized query. This allows an attacker to inject arbitrary SQL commands.\",\n  \"fix_summary\": \"Use parameterized queries (PreparedStatement) in the DAO layer for all database operations, especially for the `seletcUser` method. Validate and sanitize all user inputs before using them in SQL queries.\"\n}",
+      "latency_seconds": 2.015,
+      "usage": {
+        "prompt_tokens": 440,
+        "completion_tokens": 121,
+        "total_tokens": 561
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample015",
+  "source_file": "Sample015.java",
+  "created_at": "2026-07-13T02:06:17.189226+00:00",
+  "temperature": 0.2
+}

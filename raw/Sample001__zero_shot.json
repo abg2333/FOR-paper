@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"SQL injection vulnerability due to unsanitized user input concatenated directly into SQL query.\",\n  \"evidence\": \"String sql = \\\"select * from t_user where name='\\\" + name + \\\"' and pass='\\\" + pass + \\\"'\\\";\",\n  \"fix_summary\": \"Use parameterized queries (PreparedStatement) instead of string concatenation to safely handle user input.\"\n}",
+      "latency_seconds": 7.244,
+      "usage": {
+        "prompt_tokens": 212,
+        "completion_tokens": 88,
+        "total_tokens": 300
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample001",
+  "source_file": "Sample001.java",
+  "created_at": "2026-07-13T02:00:30.788401+00:00",
+  "temperature": 0.2
+}

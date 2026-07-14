@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"SQL injection vulnerability in deleteBanji operation\",\n  \"evidence\": \"String id = request.getParameter(\\\"id\\\"); banjiDao.deleteBanji(id); The id parameter is taken directly from user input and passed to a DAO method without any validation or sanitization, likely leading to SQL injection.\",\n  \"fix_summary\": \"Validate that the id parameter is a numeric value (e.g., using id.matches(\\\"\\\\\\\\d+\\\")) before passing it to deleteBanji, or use parameterized queries in the DAO layer.\"\n}",
+      "latency_seconds": 2.033,
+      "usage": {
+        "prompt_tokens": 451,
+        "completion_tokens": 120,
+        "total_tokens": 571
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample016",
+  "source_file": "Sample016.java",
+  "created_at": "2026-07-13T02:06:52.494324+00:00",
+  "temperature": 0.2
+}

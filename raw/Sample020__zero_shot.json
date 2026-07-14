@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"SQL injection vulnerability in the BanjiDao class methods (selectAll, save) due to unsanitized user input being passed directly to SQL queries.\",\n  \"evidence\": \"User-supplied parameters (banji_name, zhuanye, fudaoyuan, renshu) are read from the request and set into a BanjiBean without any validation or sanitization, then passed to banjiDao.save(bean). The selectAll method likely constructs SQL without parameterization.\",\n  \"fix_summary\": \"Use prepared statements with parameterized queries in BanjiDao for all database operations. Validate and sanitize all user inputs before use. Consider using an ORM framework like Hibernate or JPA to avoid raw SQL.\"\n}",
+      "latency_seconds": 2.514,
+      "usage": {
+        "prompt_tokens": 395,
+        "completion_tokens": 157,
+        "total_tokens": 552
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample020",
+  "source_file": "Sample020.java",
+  "created_at": "2026-07-13T02:08:35.911564+00:00",
+  "temperature": 0.2
+}

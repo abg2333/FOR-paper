@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"反射型跨站脚本（XSS）\",\n  \"evidence\": \"out.write(\\\"<p>您搜索的班级名称是：\\\" + banji_name + \\\"</p>\\\");  // banji_name 直接拼接未编码\",\n  \"fix_summary\": \"对输出到 HTML 的用户输入进行上下文相关的编码，例如使用 OWASP Java Encoder 的 Encode.forHtml() 或 JSTL <c:out> 标签。\"\n}",
+      "latency_seconds": 1.98,
+      "usage": {
+        "prompt_tokens": 324,
+        "completion_tokens": 109,
+        "total_tokens": 433
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample018",
+  "source_file": "Sample018.java",
+  "created_at": "2026-07-13T02:07:43.719038+00:00",
+  "temperature": 0.2
+}

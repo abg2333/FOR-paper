@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"SQL injection vulnerability in UserDao2 methods (selectAll, save) due to unsanitized user input being concatenated into SQL queries.\",\n  \"evidence\": \"User-supplied parameters (name, pass, xingming, etc.) are passed directly to userDao.save(userBean) and userDao.selectAll() without any validation or parameterization. The code does not use PreparedStatement or any ORM framework to safely handle input.\",\n  \"fix_summary\": \"Use parameterized queries (PreparedStatement) in UserDao2 for all database operations. Validate and sanitize all user inputs before use. Consider using an ORM like Hibernate or JPA to abstract SQL generation.\"\n}",
+      "latency_seconds": 3.047,
+      "usage": {
+        "prompt_tokens": 423,
+        "completion_tokens": 149,
+        "total_tokens": 572
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample012",
+  "source_file": "Sample012.java",
+  "created_at": "2026-07-13T02:04:59.855537+00:00",
+  "temperature": 0.2
+}

@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"Hardcoded credentials in source code\",\n  \"evidence\": \"if (name.equals(\\\"admin\\\") && pass.equals(\\\"1\\\"))\",\n  \"fix_summary\": \"Store credentials securely (e.g., hashed in a database) and validate against them, never hardcode passwords in code.\"\n}",
+      "latency_seconds": 1.534,
+      "usage": {
+        "prompt_tokens": 167,
+        "completion_tokens": 72,
+        "total_tokens": 239
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample025",
+  "source_file": "Sample025.jsp",
+  "created_at": "2026-07-13T02:10:33.356612+00:00",
+  "temperature": 0.2
+}

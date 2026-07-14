@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"Hardcoded database credentials and connection URL in source code.\",\n  \"evidence\": \"The database URL, driver class, and environment variable names for username/password are hardcoded as static fields. The URL includes sensitive parameters like 'allowPublicKeyRetrieval=true' and 'useSSL=false' which weaken security.\",\n  \"fix_summary\": \"Move all database configuration (URL, driver, credentials) to an external configuration file (e.g., properties file) or use a connection pool with encrypted credentials. Avoid hardcoding any connection details in the source code.\"\n}",
+      "latency_seconds": 2.347,
+      "usage": {
+        "prompt_tokens": 235,
+        "completion_tokens": 124,
+        "total_tokens": 359
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample022",
+  "source_file": "Sample022.java",
+  "created_at": "2026-07-13T02:09:27.801514+00:00",
+  "temperature": 0.2
+}

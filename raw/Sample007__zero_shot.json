@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"SQL injection vulnerability due to unsanitized user input in dynamic SQL query construction.\",\n  \"evidence\": \"The code uses Statement and concatenates user input directly into SQL string: String sql = \\\"select * from t_banji where id = \\\" + request.getParameter(\\\"id\\\");\",\n  \"fix_summary\": \"Replace Statement with PreparedStatement and use parameterized queries to safely bind user inputs, preventing SQL injection.\"\n}",
+      "latency_seconds": 1.914,
+      "usage": {
+        "prompt_tokens": 329,
+        "completion_tokens": 97,
+        "total_tokens": 426
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample007",
+  "source_file": "Sample007.java",
+  "created_at": "2026-07-13T02:02:43.909508+00:00",
+  "temperature": 0.2
+}

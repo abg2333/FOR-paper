@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"Cross-Site Scripting (XSS) vulnerability via unescaped session attribute output.\",\n  \"evidence\": \"Line: 欢迎您：<%= session.getAttribute(\\\"yonghu\\\")%>\",\n  \"fix_summary\": \"Use JSTL <c:out> or fn:escapeXml() to escape the session attribute value before rendering in HTML.\"\n}",
+      "latency_seconds": 1.695,
+      "usage": {
+        "prompt_tokens": 388,
+        "completion_tokens": 86,
+        "total_tokens": 474
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample027",
+  "source_file": "Sample027.jsp",
+  "created_at": "2026-07-13T02:11:17.824856+00:00",
+  "temperature": 0.2
+}

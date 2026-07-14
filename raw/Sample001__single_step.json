@@ -1,0 +1,19 @@
+{
+  "method": "single_step",
+  "calls": [
+    {
+      "content": "{\n  \"issues\": [\n    \"SQL Injection vulnerability: user input is directly concatenated into SQL query\",\n    \"Potential resource leak: Connection and Statement are not properly closed if exception occurs before try-with-resources\",\n    \"Security: passwords should not be stored or compared in plaintext\",\n    \"Error handling: stack trace printing is not appropriate for production code\",\n    \"Typo: 'connetion' instead of 'connection'\"\n  ],\n  \"root_cause\": \"The login method constructs SQL queries by concatenating user-supplied strings, allowing attackers to inject malicious SQL commands. Additionally, the method lacks proper error handling and uses insecure password storage.\",\n  \"refactoring\": \"Use PreparedStatement with parameterized queries to prevent SQL injection. Hash passwords before storage and comparison. Improve error handling by logging instead of printing stack traces. Fix variable naming typo.\",\n  \"corrected_code\": \"package org.example.app.user;\\n\\nimport org.example.app.db.DB;\\nimport org.slf4j.Logger;\\nimport org.slf4j.LoggerFactory;\\n\\nimport java.sql.Connection;\\nimport java.sql.PreparedStatement;\\nimport java.sql.ResultSet;\\nimport java.sql.SQLException;\\n\\npublic class Sample001 {\\n    private static final Logger logger = LoggerFactory.getLogger(Sample001.class);\\n\\n    public boolean login(String name, String pass) {\\n        String hashedPass = hashPassword(pass); // Assume hashPassword method exists\\n        String sql = \\\"SELECT * FROM t_user WHERE name = ? AND pass = ?\\\";\\n        try (Connection connection = DB.getConnection();\\n             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {\\n            preparedStatement.setString(1, name);\\n            preparedStatement.setString(2, hashedPass);\\n            try (ResultSet resultSet = preparedStatement.executeQuery()) {\\n                return resultSet.next();\\n            }\\n        } catch (SQLException e) {\\n            logger.error(\\\"Login failed for user: {}\\\", name, e);\\n            return false;\\n        }\\n    }\\n\\n    private String hashPassword(String password) {\\n        // Implement secure hashing (e.g., bcrypt, scrypt, Argon2)\\n        // This is a placeholder - never use plain MD5/SHA1\\n        return password; // Replace with actual hashing\\n    }\\n}\"\n}",
+      "latency_seconds": 5.924,
+      "usage": {
+        "prompt_tokens": 220,
+        "completion_tokens": 510,
+        "total_tokens": 730
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample001",
+  "source_file": "Sample001.java",
+  "created_at": "2026-07-13T02:00:36.717394+00:00",
+  "temperature": 0.2
+}

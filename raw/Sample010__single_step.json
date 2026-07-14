@@ -1,0 +1,19 @@
+{
+  "method": "single_step",
+  "calls": [
+    {
+      "content": "{\n  \"issues\": [\n    \"Extremely inefficient N+1 query pattern: first counts all rows, then fetches each row individually with LIMIT 1 OFFSET.\",\n    \"Unused variable 'json' initialized to empty string, then overwritten.\",\n    \"Potential resource leak: DB.getConnetion() may return null, leading to NullPointerException.\",\n    \"No handling of empty result set (rowCount = 0) – loop still executes zero times, but code is fragile.\",\n    \"Typo in method name: 'getConnetion' should be 'getConnection'.\",\n    \"No exception handling beyond printing stack trace; caller gets empty JSON on error.\",\n    \"No use of try-with-resources for the outer try block; resources are closed but pattern is inconsistent.\",\n    \"Performance: multiple database connections opened and closed for each row (N+1 connections).\"\n  ],\n  \"root_cause\": \"The developer implemented a naive pagination loop instead of a single query to fetch all rows, causing severe performance degradation and unnecessary complexity.\",\n  \"refactoring\": \"Replace the entire method with a single SQL query that selects all rows without pagination. Use try-with-resources for all resources. Handle potential null connection. Fix method name typo. Return meaningful error response on failure.\",\n  \"corrected_code\": \"package org.example.app.banji;\\n\\nimport com.alibaba.fastjson.JSON;\\nimport org.example.app.db.DB;\\n\\nimport java.sql.Connection;\\nimport java.sql.PreparedStatement;\\nimport java.sql.ResultSet;\\nimport java.sql.SQLException;\\nimport java.util.ArrayList;\\nimport java.util.List;\\n\\npublic class Sample010 {\\n\\n    public String selectAll() {\\n        List<BanjiBean> list = new ArrayList<>();\\n        String sql = \\\"SELECT * FROM t_banji\\\";\\n        try (Connection connection = DB.getConnection();\\n             PreparedStatement statement = connection.prepareStatement(sql);\\n             ResultSet resultSet = statement.executeQuery()) {\\n            while (resultSet.next()) {\\n                BanjiBean bean = new BanjiBean();\\n                bean.setId(resultSet.getInt(\\\"id\\\"));\\n                bean.setBanji_name(resultSet.getString(\\\"banji_name\\\"));\\n                bean.setZhuanye(resultSet.getString(\\\"zhuanye\\\"));\\n                bean.setFudaoyuan(resultSet.getString(\\\"fudaoyuan\\\"));\\n                bean.setRenshu(resultSet.getInt(\\\"renshu\\\"));\\n                list.add(bean);\\n            }\\n        } catch (SQLException e) {\\n            e.printStackTrace();\\n            return \\\"[]\\\";\\n        }\\n        return JSON.toJSONString(list);\\n    }\\n}\"\n}",
+      "latency_seconds": 6.406,
+      "usage": {
+        "prompt_tokens": 469,
+        "completion_tokens": 600,
+        "total_tokens": 1069
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample010",
+  "source_file": "Sample010.java",
+  "created_at": "2026-07-13T02:04:04.242272+00:00",
+  "temperature": 0.2
+}

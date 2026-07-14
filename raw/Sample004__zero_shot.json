@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"SQL syntax error: missing comma between column assignments in UPDATE statement\",\n  \"evidence\": \"String sql = \\\"UPDATE t_user SET name = ? pass = ?, xingming = ?, banji = ?, \\\"\",\n  \"fix_summary\": \"Add a comma after 'name = ?' to separate column assignments: 'SET name = ?, pass = ?, ...'\"\n}",
+      "latency_seconds": 1.879,
+      "usage": {
+        "prompt_tokens": 308,
+        "completion_tokens": 84,
+        "total_tokens": 392
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample004",
+  "source_file": "Sample004.java",
+  "created_at": "2026-07-13T02:01:40.344610+00:00",
+  "temperature": 0.2
+}

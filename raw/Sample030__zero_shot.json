@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"Plaintext password storage\",\n  \"evidence\": \"public String pass;\",\n  \"fix_summary\": \"Hash the password using a strong one-way algorithm like bcrypt, Argon2, or PBKDF2 before storing it. Never store plaintext passwords.\"\n}",
+      "latency_seconds": 1.586,
+      "usage": {
+        "prompt_tokens": 123,
+        "completion_tokens": 63,
+        "total_tokens": 186
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample030",
+  "source_file": "Sample030.java",
+  "created_at": "2026-07-13T02:12:33.312887+00:00",
+  "temperature": 0.2
+}

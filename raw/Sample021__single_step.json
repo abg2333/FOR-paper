@@ -1,0 +1,19 @@
+{
+  "method": "single_step",
+  "calls": [
+    {
+      "content": "{\n  \"issues\": [\n    \"Hardcoded database credentials in source code\",\n    \"No connection pooling or resource management\",\n    \"Swallowing exception without proper handling\",\n    \"Potential SQL injection if connection is used unsafely\",\n    \"No closing of connection or try-with-resources\",\n    \"Static mutable fields can cause thread-safety issues\"\n  ],\n  \"root_cause\": \"The code stores sensitive credentials as plaintext static fields, uses a raw JDBC connection without pooling, and silently catches exceptions, making it insecure, non-scalable, and hard to maintain.\",\n  \"refactoring\": \"Move credentials to environment variables or a secure config file. Use a connection pool (e.g., HikariCP). Replace static fields with a proper configuration class. Use try-with-resources or ensure connections are closed. Log exceptions properly instead of printStackTrace.\",\n  \"corrected_code\": \"package org.example.app.db;\\n\\nimport com.zaxxer.hikari.HikariConfig;\\nimport com.zaxxer.hikari.HikariDataSource;\\nimport org.slf4j.Logger;\\nimport org.slf4j.LoggerFactory;\\n\\nimport java.sql.Connection;\\nimport java.sql.SQLException;\\n\\npublic class Sample021 {\\n    private static final Logger logger = LoggerFactory.getLogger(Sample021.class);\\n    private static final HikariDataSource dataSource;\\n\\n    static {\\n        HikariConfig config = new HikariConfig();\\n        config.setJdbcUrl(System.getenv(\\\"DB_URL\\\"));\\n        config.setUsername(System.getenv(\\\"DB_USER\\\"));\\n        config.setPassword(System.getenv(\\\"DB_PASSWORD\\\"));\\n        config.setDriverClassName(\\\"com.mysql.cj.jdbc.Driver\\\");\\n        config.setMaximumPoolSize(10);\\n        config.setConnectionTimeout(30000);\\n        config.setIdleTimeout(600000);\\n        config.setMaxLifetime(1800000);\\n        dataSource = new HikariDataSource(config);\\n    }\\n\\n    public static Connection getConnection() throws SQLException {\\n        return dataSource.getConnection();\\n    }\\n\\n    // Call this on application shutdown\\n    public static void closeDataSource() {\\n        if (dataSource != null && !dataSource.isClosed()) {\\n            dataSource.close();\\n        }\\n    }\\n}\"\n}",
+      "latency_seconds": 5.183,
+      "usage": {
+        "prompt_tokens": 237,
+        "completion_tokens": 518,
+        "total_tokens": 755
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample021",
+  "source_file": "Sample021.java",
+  "created_at": "2026-07-13T02:09:12.726655+00:00",
+  "temperature": 0.2
+}

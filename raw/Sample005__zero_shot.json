@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"The column order in the INSERT statement does not match the order in which parameters are set, causing data to be stored in wrong columns.\",\n  \"evidence\": \"SQL columns: (name, pass, xingming, banji, zhuanye, xingbie, tel) but setString order: 1=name, 2=pass, 3=zhuanye, 4=banji, 5=xingming, 6=xingbie, 7=tel. Columns 3 and 5 are swapped.\",\n  \"fix_summary\": \"Reorder the setString calls to match the SQL column order: setString(3, bean.getXingming()), setString(4, bean.getBanji()), setString(5, bean.getZhuanye()).\"\n}",
+      "latency_seconds": 2.546,
+      "usage": {
+        "prompt_tokens": 291,
+        "completion_tokens": 172,
+        "total_tokens": 463
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample005",
+  "source_file": "Sample005.java",
+  "created_at": "2026-07-13T02:01:59.257414+00:00",
+  "temperature": 0.2
+}

@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"N+1 query problem causing severe performance degradation\",\n  \"evidence\": \"The code first executes a full table scan (SELECT * FROM t_banji) to count rows, then iterates rowCount times executing a separate SELECT with LIMIT 1 OFFSET ? for each row. This results in N+1 database round trips (1 count query + N individual row queries), which is extremely inefficient for any non-trivial table size.\",\n  \"fix_summary\": \"Replace the entire logic with a single SQL query: SELECT * FROM t_banji. Execute it once with a Statement or PreparedStatement, iterate the ResultSet once, and populate the list directly. Remove the rowCount loop and the paged queries entirely.\"\n}",
+      "latency_seconds": 2.695,
+      "usage": {
+        "prompt_tokens": 461,
+        "completion_tokens": 158,
+        "total_tokens": 619
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample010",
+  "source_file": "Sample010.java",
+  "created_at": "2026-07-13T02:03:57.832524+00:00",
+  "temperature": 0.2
+}

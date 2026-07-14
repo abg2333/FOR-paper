@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n    \"primary_issue\": \"The login form uses HTTP GET method, which exposes sensitive credentials (username and password) in the URL, query string, and browser history.\",\n    \"evidence\": \"The form tag has method=\\\"get\\\", and the password field is named \\\"pass\\\". When submitted, credentials will be sent as URL parameters (e.g., /LoginServlet?name=user&pass=secret).\",\n    \"fix_summary\": \"Change the form method from \\\"get\\\" to \\\"post\\\" to send credentials in the request body, preventing exposure in URLs, logs, and browser history.\"\n}",
+      "latency_seconds": 2.427,
+      "usage": {
+        "prompt_tokens": 606,
+        "completion_tokens": 125,
+        "total_tokens": 731
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample028",
+  "source_file": "Sample028.jsp",
+  "created_at": "2026-07-13T02:11:39.052868+00:00",
+  "temperature": 0.2
+}

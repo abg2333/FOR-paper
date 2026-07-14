@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n    \"primary_issue\": \"Type mismatch: parsing banji_name as integer for id field\",\n    \"evidence\": \"bean.setId(Integer.parseInt(resultSet.getString(\\\"banji_name\\\")));\",\n    \"fix_summary\": \"Replace Integer.parseInt(resultSet.getString(\\\"banji_name\\\")) with resultSet.getInt(\\\"id\\\") or resultSet.getInt(\\\"banji_id\\\") to correctly retrieve the numeric identifier from the database, assuming the table has a proper integer primary key column.\"\n}",
+      "latency_seconds": 2.119,
+      "usage": {
+        "prompt_tokens": 338,
+        "completion_tokens": 107,
+        "total_tokens": 445
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample009",
+  "source_file": "Sample009.java",
+  "created_at": "2026-07-13T02:03:30.096303+00:00",
+  "temperature": 0.2
+}

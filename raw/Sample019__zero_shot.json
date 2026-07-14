@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"SQL injection vulnerability in deleteBanji operation\",\n  \"evidence\": \"The 'id' parameter from the request is passed directly to banjiDao.deleteBanji(id) without any sanitization or validation. If the DAO implementation constructs SQL queries by concatenating this parameter, an attacker can manipulate the query.\",\n  \"fix_summary\": \"Use parameterized queries (PreparedStatement) in the DAO layer for all database operations, especially for the deleteBanji method. Validate that the 'id' parameter is a numeric value before passing it to the DAO.\"\n}",
+      "latency_seconds": 2.375,
+      "usage": {
+        "prompt_tokens": 485,
+        "completion_tokens": 124,
+        "total_tokens": 609
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample019",
+  "source_file": "Sample019.java",
+  "created_at": "2026-07-13T02:08:09.303151+00:00",
+  "temperature": 0.2
+}

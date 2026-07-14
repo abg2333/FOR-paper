@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"Hardcoded authentication bypass using weak credentials\",\n  \"evidence\": \"if (\\\"admin\\\".equals(name) || \\\"1\\\".equals(pass))\",\n  \"fix_summary\": \"Replace hardcoded credentials with a secure authentication mechanism, such as validating against a database of hashed passwords using a strong hashing algorithm (e.g., bcrypt). Also, avoid using user-controlled input directly in session attributes without sanitization.\"\n}",
+      "latency_seconds": 1.962,
+      "usage": {
+        "prompt_tokens": 169,
+        "completion_tokens": 98,
+        "total_tokens": 267
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample026",
+  "source_file": "Sample026.jsp",
+  "created_at": "2026-07-13T02:10:58.397727+00:00",
+  "temperature": 0.2
+}

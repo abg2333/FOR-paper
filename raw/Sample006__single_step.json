@@ -1,0 +1,19 @@
+{
+  "method": "single_step",
+  "calls": [
+    {
+      "content": "{\n  \"issues\": [\n    \"SQL injection vulnerability due to string concatenation with user input\",\n    \"Potential null pointer exception if DB.getConnetion() returns null\",\n    \"Typo in method name 'getConnetion' (should be 'getConnection')\",\n    \"Inefficient use of Statement instead of PreparedStatement\",\n    \"Error handling silently swallows exceptions (only prints stack trace)\",\n    \"Returning empty string on error may confuse callers\"\n  ],\n  \"root_cause\": \"The code directly concatenates user-supplied input into SQL query strings, allowing attackers to inject malicious SQL. Additionally, it uses Statement instead of PreparedStatement, which is both insecure and less performant for repeated queries. The error handling is minimal and does not provide meaningful feedback.\",\n  \"refactoring\": \"Replace Statement with PreparedStatement to parameterize the query and prevent SQL injection. Validate or sanitize input if necessary. Improve error handling to either log properly or return a meaningful error response. Fix the typo in the method name. Ensure the connection is not null before use.\",\n  \"corrected_code\": \"package org.example.app.banji;\\n\\nimport com.alibaba.fastjson.JSON;\\nimport org.example.app.db.DB;\\n\\nimport java.sql.Connection;\\nimport java.sql.PreparedStatement;\\nimport java.sql.ResultSet;\\nimport java.sql.SQLException;\\nimport java.util.ArrayList;\\nimport java.util.List;\\n\\npublic class Sample006 {\\n\\n    public String selectBanji(String banji_name) {\\n        List<BanjiBean> list = new ArrayList<>();\\n        String json = \\\"\\\";\\n        String sql = \\\"select * from t_banji where banji_name like ?\\\";\\n        try (Connection connection = DB.getConnection();\\n             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {\\n            preparedStatement.setString(1, \\\"%\\\" + banji_name + \\\"%\\\");\\n            try (ResultSet resultSet = preparedStatement.executeQuery()) {\\n                while (resultSet.next()) {\\n                    BanjiBean bean = new BanjiBean();\\n                    bean.setId(resultSet.getInt(\\\"id\\\"));\\n                    bean.setBanji_name(resultSet.getString(\\\"banji_name\\\"));\\n                    bean.setZhuanye(resultSet.getString(\\\"zhuanye\\\"));\\n                    bean.setFudaoyuan(resultSet.getString(\\\"fudaoyuan\\\"));\\n                    bean.setRenshu(resultSet.getInt(\\\"renshu\\\"));\\n                    list.add(bean);\\n                }\\n            }\\n            json = JSON.toJSONString(list);\\n        } catch (SQLException e) {\\n            // Log the exception properly in production\\n            e.printStackTrace();\\n            // Optionally return an error JSON or rethrow as runtime exception\\n            json = \\\"{\\\\\\\"error\\\\\\\":\\\\\\\"Database query failed\\\\\\\"}\\\";\\n        }\\n        return json;\\n    }\\n}\"\n}",
+      "latency_seconds": 6.582,
+      "usage": {
+        "prompt_tokens": 361,
+        "completion_tokens": 644,
+        "total_tokens": 1005
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample006",
+  "source_file": "Sample006.java",
+  "created_at": "2026-07-13T02:02:29.413447+00:00",
+  "temperature": 0.2
+}

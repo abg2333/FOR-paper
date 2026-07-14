@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"SQL injection vulnerability in the selectBanji method due to unsanitized user input concatenated directly into the SQL query.\",\n  \"evidence\": \"String sql = \\\"select * from t_banji where banji_name like '%\\\" + banji_name + \\\"%'\\\";\",\n  \"fix_summary\": \"Use a PreparedStatement with parameterized queries instead of Statement and string concatenation. For example: PreparedStatement ps = connetion.prepareStatement(\\\"select * from t_banji where banji_name like ?\\\"); ps.setString(1, \\\"%\\\" + banji_name + \\\"%\\\");\"\n}",
+      "latency_seconds": 2.11,
+      "usage": {
+        "prompt_tokens": 353,
+        "completion_tokens": 140,
+        "total_tokens": 493
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample006",
+  "source_file": "Sample006.java",
+  "created_at": "2026-07-13T02:02:22.827076+00:00",
+  "temperature": 0.2
+}

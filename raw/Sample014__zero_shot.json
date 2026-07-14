@@ -1,0 +1,19 @@
+{
+  "method": "zero_shot",
+  "calls": [
+    {
+      "content": "{\n  \"primary_issue\": \"Unbounded memory growth due to StringBuilder accumulation of user input across requests.\",\n  \"evidence\": \"The instance variable `requestAudit` (StringBuilder) is shared across all requests to this servlet. Each call to doPost appends the current timestamp and the user-controlled `op` parameter without any size limit. Over time, this will cause the StringBuilder to grow indefinitely, leading to OutOfMemoryError.\",\n  \"fix_summary\": \"Remove the instance-level StringBuilder or limit its size. For auditing, write to a file or database with rotation, or use a bounded data structure (e.g., a ring buffer). Alternatively, do not store audit data in memory across requests.\"\n}",
+      "latency_seconds": 2.903,
+      "usage": {
+        "prompt_tokens": 254,
+        "completion_tokens": 148,
+        "total_tokens": 402
+      },
+      "model": "deepseek-chat"
+    }
+  ],
+  "sample_id": "Sample014",
+  "source_file": "Sample014.java",
+  "created_at": "2026-07-13T02:05:55.506988+00:00",
+  "temperature": 0.2
+}
