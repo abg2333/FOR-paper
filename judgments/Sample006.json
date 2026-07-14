@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample006",
+    "truth":  {
+                  "sample_id":  "Sample006",
+                  "track":  "security",
+                  "label":  "SQL_INJECTION",
+                  "expected":  "banji_name is concatenated directly into a LIKE query."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  true,
+                                        "reason":  "The report correctly identifies the SQL injection vulnerability, points to the exact line where user input is concatenated into the LIKE query, and recommends using PreparedStatement with parameterized queries."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "The report identifies the SQL injection vulnerability due to string concatenation with user input and recommends using PreparedStatement to parameterize the query."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "The report correctly identifies the SQL injection vulnerability, provides evidence of the concatenation in the LIKE query, and recommends using PreparedStatement with parameterized queries as the repair strategy."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\n  \"zero_shot\": {\n    \"detected\": true,\n    \"reason\": \"The report correctly identifies the SQL injection vulnerability, points to the exact line where user input is concatenated into the LIKE query, and recommends using PreparedStatement with parameterized queries.\"\n  },\n  \"single_step\": {\n    \"detected\": true,\n    \"reason\": \"The report identifies the SQL injection vulnerability due to string concatenation with user input and recommends using PreparedStatement to parameterize the query.\"\n  },\n  \"three_stage\": {\n    \"detected\": true,\n    \"reason\": \"The report correctly identifies the SQL injection vulnerability, provides evidence of the concatenation in the LIKE query, and recommends using PreparedStatement with parameterized queries as the repair strategy.\"\n  }\n}",
+                           "latency_seconds":  2.204,
+                           "usage":  {
+                                         "prompt_tokens":  1700,
+                                         "completion_tokens":  159,
+                                         "total_tokens":  1859
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:08.207075+00:00"
+}

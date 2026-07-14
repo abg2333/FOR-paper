@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample005",
+    "truth":  {
+                  "sample_id":  "Sample005",
+                  "track":  "correctness",
+                  "label":  "FIELD_MAPPING_ERROR",
+                  "expected":  "The xingming and zhuanye values are bound to each other\u0027s parameter positions."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  true,
+                                        "reason":  "The report correctly identifies that the column order in the INSERT statement does not match the parameter setting order, specifically pointing out that columns 3 (xingming) and 5 (zhuanye) are swapped, which matches the target defect description."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "The report correctly identifies the column order mismatch, stating that the setString calls assign values in a different order than the SQL column order, resulting in zhuanye being stored in xingming and xingming in zhuanye, which matches the target defect."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "The report correctly identifies the parameter order mismatch between the SQL column list and PreparedStatement setter calls, specifically noting that positions 3 and 5 are swapped, which matches the target defect description."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\n  \"zero_shot\": {\n    \"detected\": true,\n    \"reason\": \"The report correctly identifies that the column order in the INSERT statement does not match the parameter setting order, specifically pointing out that columns 3 (xingming) and 5 (zhuanye) are swapped, which matches the target defect description.\"\n  },\n  \"single_step\": {\n    \"detected\": true,\n    \"reason\": \"The report correctly identifies the column order mismatch, stating that the setString calls assign values in a different order than the SQL column order, resulting in zhuanye being stored in xingming and xingming in zhuanye, which matches the target defect.\"\n  },\n  \"three_stage\": {\n    \"detected\": true,\n    \"reason\": \"The report correctly identifies the parameter order mismatch between the SQL column list and PreparedStatement setter calls, specifically noting that positions 3 and 5 are swapped, which matches the target defect description.\"\n  }\n}",
+                           "latency_seconds":  2.401,
+                           "usage":  {
+                                         "prompt_tokens":  1740,
+                                         "completion_tokens":  206,
+                                         "total_tokens":  1946
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:05.997210+00:00"
+}

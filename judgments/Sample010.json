@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample010",
+    "truth":  {
+                  "sample_id":  "Sample010",
+                  "track":  "performance",
+                  "label":  "REDUNDANT_DATABASE_ACCESS",
+                  "expected":  "The method opens a new connection and executes a query once per row instead of using one result set."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  true,
+                                        "reason":  "Correctly identifies the N+1 query problem: first a full scan to count rows, then individual queries per row. Explanation is technically accurate and matches the target defect."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "Correctly identifies the N+1 query pattern and root cause. The explanation is technically sound and matches the target defect."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "Correctly identifies the N+1 anti-pattern with row-by-row fetching. Evidence and repair strategy are technically accurate and match the target defect."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\"zero_shot\":{\"detected\":true,\"reason\":\"Correctly identifies the N+1 query problem: first a full scan to count rows, then individual queries per row. Explanation is technically accurate and matches the target defect.\"},\"single_step\":{\"detected\":true,\"reason\":\"Correctly identifies the N+1 query pattern and root cause. The explanation is technically sound and matches the target defect.\"},\"three_stage\":{\"detected\":true,\"reason\":\"Correctly identifies the N+1 anti-pattern with row-by-row fetching. Evidence and repair strategy are technically accurate and match the target defect.\"}}",
+                           "latency_seconds":  2.118,
+                           "usage":  {
+                                         "prompt_tokens":  1670,
+                                         "completion_tokens":  125,
+                                         "total_tokens":  1795
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:16.793412+00:00"
+}

@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample014",
+    "truth":  {
+                  "sample_id":  "Sample014",
+                  "track":  "correctness",
+                  "label":  "SHARED_MUTABLE_STATE",
+                  "expected":  "A mutable StringBuilder field is shared and modified by concurrent servlet requests."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  true,
+                                        "reason":  "The report identifies the shared mutable StringBuilder field and correctly explains that it grows unboundedly across requests, leading to memory exhaustion. It does not mention thread safety explicitly but the core defect (shared mutable state causing unbounded growth) is accurately described."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "The report explicitly identifies the shared mutable StringBuilder as a thread-safety issue and a memory leak, and correctly explains that it is shared across requests without synchronization. The root cause and refactoring address the defect."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "The report identifies the race condition on the shared StringBuilder and provides evidence of interleaved append/toString calls. However, the repair strategy (synchronization) does not address the unbounded growth, which is a key aspect of the target defect. The report acknowledges this limitation in assumptions, so it still technically detects the shared mutable state issue."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\n  \"zero_shot\": {\n    \"detected\": true,\n    \"reason\": \"The report identifies the shared mutable StringBuilder field and correctly explains that it grows unboundedly across requests, leading to memory exhaustion. It does not mention thread safety explicitly but the core defect (shared mutable state causing unbounded growth) is accurately described.\"\n  },\n  \"single_step\": {\n    \"detected\": true,\n    \"reason\": \"The report explicitly identifies the shared mutable StringBuilder as a thread-safety issue and a memory leak, and correctly explains that it is shared across requests without synchronization. The root cause and refactoring address the defect.\"\n  },\n  \"three_stage\": {\n    \"detected\": true,\n    \"reason\": \"The report identifies the race condition on the shared StringBuilder and provides evidence of interleaved append/toString calls. However, the repair strategy (synchronization) does not address the unbounded growth, which is a key aspect of the target defect. The report acknowledges this limitation in assumptions, so it still technically detects the shared mutable state issue.\"\n  }\n}",
+                           "latency_seconds":  3.04,
+                           "usage":  {
+                                         "prompt_tokens":  1409,
+                                         "completion_tokens":  224,
+                                         "total_tokens":  1633
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:26.241787+00:00"
+}

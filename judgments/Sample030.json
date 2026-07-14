@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample030",
+    "truth":  {
+                  "sample_id":  "Sample030",
+                  "track":  "maintainability",
+                  "label":  "BROKEN_ENCAPSULATION",
+                  "expected":  "All domain fields, including the password, are public and directly mutable."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  false,
+                                        "reason":  "The report focuses on plaintext password storage, not on the broken encapsulation caused by public fields. It does not identify that all domain fields are public and directly mutable."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "The report explicitly states \u0027Public fields violate encapsulation and data hiding principles\u0027 and recommends making all fields private, correctly identifying the target defect."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "The report identifies \u0027Publicly exposed mutable fields break encapsulation\u0027 and provides evidence that all fields are public, correctly targeting the defect."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\"zero_shot\":{\"detected\":false,\"reason\":\"The report focuses on plaintext password storage, not on the broken encapsulation caused by public fields. It does not identify that all domain fields are public and directly mutable.\"},\"single_step\":{\"detected\":true,\"reason\":\"The report explicitly states \u0027Public fields violate encapsulation and data hiding principles\u0027 and recommends making all fields private, correctly identifying the target defect.\"},\"three_stage\":{\"detected\":true,\"reason\":\"The report identifies \u0027Publicly exposed mutable fields break encapsulation\u0027 and provides evidence that all fields are public, correctly targeting the defect.\"}}",
+                           "latency_seconds":  2.115,
+                           "usage":  {
+                                         "prompt_tokens":  1840,
+                                         "completion_tokens":  124,
+                                         "total_tokens":  1964
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:14:00.923022+00:00"
+}

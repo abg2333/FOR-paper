@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample028",
+    "truth":  {
+                  "sample_id":  "Sample028",
+                  "track":  "security",
+                  "label":  "SENSITIVE_DATA_IN_URL",
+                  "expected":  "The login form submits credentials with GET, exposing them in the URL."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  true,
+                                        "reason":  "Correctly identifies the GET method exposing credentials in URL and provides accurate evidence and fix."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "Lists \u0027Password field uses GET method exposing credentials in URL\u0027 as an issue and includes changing method to POST in refactoring, though mixed with other issues."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "Clearly identifies the GET method vulnerability, provides evidence with line number, and proposes changing to POST as the repair."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\"zero_shot\":{\"detected\":true,\"reason\":\"Correctly identifies the GET method exposing credentials in URL and provides accurate evidence and fix.\"},\"single_step\":{\"detected\":true,\"reason\":\"Lists \u0027Password field uses GET method exposing credentials in URL\u0027 as an issue and includes changing method to POST in refactoring, though mixed with other issues.\"},\"three_stage\":{\"detected\":true,\"reason\":\"Clearly identifies the GET method vulnerability, provides evidence with line number, and proposes changing to POST as the repair.\"}}",
+                           "latency_seconds":  1.944,
+                           "usage":  {
+                                         "prompt_tokens":  2893,
+                                         "completion_tokens":  109,
+                                         "total_tokens":  3002
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:56.446816+00:00"
+}

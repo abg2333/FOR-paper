@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample002",
+    "truth":  {
+                  "sample_id":  "Sample002",
+                  "track":  "security",
+                  "label":  "SQL_INJECTION",
+                  "expected":  "The LIKE query concatenates xingming directly into SQL."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  true,
+                                        "reason":  "Correctly identifies SQL injection due to direct concatenation of xingming into SQL query, and recommends parameterized query."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "Correctly identifies SQL injection as primary root cause, with direct concatenation evidence and parameterized query fix."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "Correctly identifies SQL injection vulnerability with evidence of concatenation and provides parameterized query repair using CONCAT."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\"zero_shot\":{\"detected\":true,\"reason\":\"Correctly identifies SQL injection due to direct concatenation of xingming into SQL query, and recommends parameterized query.\"},\"single_step\":{\"detected\":true,\"reason\":\"Correctly identifies SQL injection as primary root cause, with direct concatenation evidence and parameterized query fix.\"},\"three_stage\":{\"detected\":true,\"reason\":\"Correctly identifies SQL injection vulnerability with evidence of concatenation and provides parameterized query repair using CONCAT.\"}}",
+                           "latency_seconds":  2.659,
+                           "usage":  {
+                                         "prompt_tokens":  1905,
+                                         "completion_tokens":  104,
+                                         "total_tokens":  2009
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:12:58.793577+00:00"
+}

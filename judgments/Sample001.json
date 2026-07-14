@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample001",
+    "truth":  {
+                  "sample_id":  "Sample001",
+                  "track":  "security",
+                  "label":  "SQL_INJECTION",
+                  "expected":  "login concatenates name and pass directly into an SQL statement."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  true,
+                                        "reason":  "The report explicitly identifies the SQL injection vulnerability due to unsanitized user input concatenated into the SQL query, provides the exact vulnerable line as evidence, and recommends using parameterized queries (PreparedStatement). This matches the target defect description."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "The report lists SQL injection as the first issue, correctly identifies that user input is directly concatenated into the SQL query, and provides a corrected code using PreparedStatement with parameterized queries. The explanation is technically correct and matches the target defect."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "The report identifies SQL injection as the primary issue, explains that user-supplied parameters are concatenated directly into the SQL query without sanitization or parameterization, and provides a repair using PreparedStatement. The evidence and repair strategy are technically correct and match the target defect."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\n  \"zero_shot\": {\n    \"detected\": true,\n    \"reason\": \"The report explicitly identifies the SQL injection vulnerability due to unsanitized user input concatenated into the SQL query, provides the exact vulnerable line as evidence, and recommends using parameterized queries (PreparedStatement). This matches the target defect description.\"\n  },\n  \"single_step\": {\n    \"detected\": true,\n    \"reason\": \"The report lists SQL injection as the first issue, correctly identifies that user input is directly concatenated into the SQL query, and provides a corrected code using PreparedStatement with parameterized queries. The explanation is technically correct and matches the target defect.\"\n  },\n  \"three_stage\": {\n    \"detected\": true,\n    \"reason\": \"The report identifies SQL injection as the primary issue, explains that user-supplied parameters are concatenated directly into the SQL query without sanitization or parameterization, and provides a repair using PreparedStatement. The evidence and repair strategy are technically correct and match the target defect.\"\n  }\n}",
+                           "latency_seconds":  2.521,
+                           "usage":  {
+                                         "prompt_tokens":  1269,
+                                         "completion_tokens":  214,
+                                         "total_tokens":  1483
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:12:56.126822+00:00"
+}

@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample019",
+    "truth":  {
+                  "sample_id":  "Sample019",
+                  "track":  "maintainability",
+                  "label":  "DEAD_CODE",
+                  "expected":  "The block guarded by if (false) is unreachable."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  false,
+                                        "reason":  "The report focuses on SQL injection and does not mention the dead code block guarded by if (false)."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "The report explicitly lists \u0027Unreachable code block with dead logic that should be removed\u0027 as the first issue and includes removal of dead code in the refactoring steps."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "The report identifies the dead if (false) block in the repair strategy and removes it in the corrected code."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\n  \"zero_shot\": {\n    \"detected\": false,\n    \"reason\": \"The report focuses on SQL injection and does not mention the dead code block guarded by if (false).\"\n  },\n  \"single_step\": {\n    \"detected\": true,\n    \"reason\": \"The report explicitly lists \u0027Unreachable code block with dead logic that should be removed\u0027 as the first issue and includes removal of dead code in the refactoring steps.\"\n  },\n  \"three_stage\": {\n    \"detected\": true,\n    \"reason\": \"The report identifies the dead if (false) block in the repair strategy and removes it in the corrected code.\"\n  }\n}",
+                           "latency_seconds":  1.922,
+                           "usage":  {
+                                         "prompt_tokens":  2604,
+                                         "completion_tokens":  142,
+                                         "total_tokens":  2746
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:37.043810+00:00"
+}

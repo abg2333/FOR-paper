@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample007",
+    "truth":  {
+                  "sample_id":  "Sample007",
+                  "track":  "correctness",
+                  "label":  "RESOURCE_LEAK",
+                  "expected":  "Connection, Statement, and ResultSet are not closed."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  false,
+                                        "reason":  "The report identifies SQL injection as the primary issue and does not mention resource leak at all."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "The report explicitly lists \u0027Resource leak: Connection, Statement, and ResultSet not closed\u0027 as an issue and suggests using try-with-resources to fix it."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "The report correctly identifies the resource leak as the primary issue, provides evidence that resources are not closed, and recommends try-with-resources to automatically close them."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\n  \"zero_shot\": {\n    \"detected\": false,\n    \"reason\": \"The report identifies SQL injection as the primary issue and does not mention resource leak at all.\"\n  },\n  \"single_step\": {\n    \"detected\": true,\n    \"reason\": \"The report explicitly lists \u0027Resource leak: Connection, Statement, and ResultSet not closed\u0027 as an issue and suggests using try-with-resources to fix it.\"\n  },\n  \"three_stage\": {\n    \"detected\": true,\n    \"reason\": \"The report correctly identifies the resource leak as the primary issue, provides evidence that resources are not closed, and recommends try-with-resources to automatically close them.\"\n  }\n}",
+                           "latency_seconds":  2.08,
+                           "usage":  {
+                                         "prompt_tokens":  1385,
+                                         "completion_tokens":  145,
+                                         "total_tokens":  1530
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:10.296983+00:00"
+}

@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample020",
+    "truth":  {
+                  "sample_id":  "Sample020",
+                  "track":  "correctness",
+                  "label":  "INVALID_SERVLET_URL_PATTERN",
+                  "expected":  "The servlet URL pattern lacks the required leading slash."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  false,
+                                        "reason":  "The report identifies SQL injection as the primary issue, but does not mention the missing leading slash in the servlet URL pattern, which is the target defect."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "The report explicitly lists \u0027Missing @WebServlet URL pattern leading slash\u0027 as an issue and includes a fix to add the leading slash in the corrected code."
+                                      },
+                      "three_stage":  {
+                                          "detected":  false,
+                                          "reason":  "The report focuses on SQL injection and does not mention the missing leading slash in the servlet URL pattern."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\n  \"zero_shot\": {\n    \"detected\": false,\n    \"reason\": \"The report identifies SQL injection as the primary issue, but does not mention the missing leading slash in the servlet URL pattern, which is the target defect.\"\n  },\n  \"single_step\": {\n    \"detected\": true,\n    \"reason\": \"The report explicitly lists \u0027Missing @WebServlet URL pattern leading slash\u0027 as an issue and includes a fix to add the leading slash in the corrected code.\"\n  },\n  \"three_stage\": {\n    \"detected\": false,\n    \"reason\": \"The report focuses on SQL injection and does not mention the missing leading slash in the servlet URL pattern.\"\n  }\n}",
+                           "latency_seconds":  1.77,
+                           "usage":  {
+                                         "prompt_tokens":  2752,
+                                         "completion_tokens":  147,
+                                         "total_tokens":  2899
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:38.819940+00:00"
+}

@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample009",
+    "truth":  {
+                  "sample_id":  "Sample009",
+                  "track":  "correctness",
+                  "label":  "TYPE_MAPPING_ERROR",
+                  "expected":  "The textual banji_name column is parsed and assigned as the numeric id."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  true,
+                                        "reason":  "Correctly identifies that banji_name is parsed as integer for id field, matching the target defect of textual column assigned to numeric id."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "Explicitly states \u0027Incorrect mapping of id field: uses banji_name column value instead of actual id column\u0027, which matches the target defect."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "Clearly identifies the type mapping error where banji_name (string) is parsed as integer for id field, matching the target defect."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\"zero_shot\":{\"detected\":true,\"reason\":\"Correctly identifies that banji_name is parsed as integer for id field, matching the target defect of textual column assigned to numeric id.\"},\"single_step\":{\"detected\":true,\"reason\":\"Explicitly states \u0027Incorrect mapping of id field: uses banji_name column value instead of actual id column\u0027, which matches the target defect.\"},\"three_stage\":{\"detected\":true,\"reason\":\"Clearly identifies the type mapping error where banji_name (string) is parsed as integer for id field, matching the target defect.\"}}",
+                           "latency_seconds":  2.003,
+                           "usage":  {
+                                         "prompt_tokens":  1936,
+                                         "completion_tokens":  121,
+                                         "total_tokens":  2057
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:14.668124+00:00"
+}

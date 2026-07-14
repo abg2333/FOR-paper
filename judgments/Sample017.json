@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample017",
+    "truth":  {
+                  "sample_id":  "Sample017",
+                  "track":  "security",
+                  "label":  "MISSING_AUTHORIZATION",
+                  "expected":  "The delete operation is executed without the authorization check applied to the add operation."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  true,
+                                        "reason":  "The report correctly identifies that the deleteBanji operation lacks authorization checks while the add operation has them, matching the target defect of MISSING_AUTHORIZATION."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "The report lists \u0027Missing authentication/authorization check for deleteBanji operation\u0027 as the first issue and notes that deleteBanji doesn\u0027t check session, correctly identifying the target defect."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "The report explicitly states \u0027Missing authorization check for the deleteBanji operation\u0027 and provides evidence that the add operation checks authorization but deleteBanji does not, accurately matching the target defect."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\"zero_shot\":{\"detected\":true,\"reason\":\"The report correctly identifies that the deleteBanji operation lacks authorization checks while the add operation has them, matching the target defect of MISSING_AUTHORIZATION.\"},\"single_step\":{\"detected\":true,\"reason\":\"The report lists \u0027Missing authentication/authorization check for deleteBanji operation\u0027 as the first issue and notes that deleteBanji doesn\u0027t check session, correctly identifying the target defect.\"},\"three_stage\":{\"detected\":true,\"reason\":\"The report explicitly states \u0027Missing authorization check for the deleteBanji operation\u0027 and provides evidence that the add operation checks authorization but deleteBanji does not, accurately matching the target defect.\"}}",
+                           "latency_seconds":  2.12,
+                           "usage":  {
+                                         "prompt_tokens":  2301,
+                                         "completion_tokens":  143,
+                                         "total_tokens":  2444
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:33.243358+00:00"
+}

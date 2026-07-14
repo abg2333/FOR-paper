@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample021",
+    "truth":  {
+                  "sample_id":  "Sample021",
+                  "track":  "security",
+                  "label":  "HARDCODED_CREDENTIALS",
+                  "expected":  "Database username and password are embedded in source code."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  true,
+                                        "reason":  "Correctly identifies hardcoded credentials (username and password) and recommends moving them to a config file or environment variables."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "Explicitly lists \u0027Hardcoded database credentials in source code\u0027 as the first issue and provides a fix using environment variables."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "Clearly identifies hardcoded credentials as the primary issue and proposes externalizing them to a properties file."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\"zero_shot\":{\"detected\":true,\"reason\":\"Correctly identifies hardcoded credentials (username and password) and recommends moving them to a config file or environment variables.\"},\"single_step\":{\"detected\":true,\"reason\":\"Explicitly lists \u0027Hardcoded database credentials in source code\u0027 as the first issue and provides a fix using environment variables.\"},\"three_stage\":{\"detected\":true,\"reason\":\"Clearly identifies hardcoded credentials as the primary issue and proposes externalizing them to a properties file.\"}}",
+                           "latency_seconds":  1.771,
+                           "usage":  {
+                                         "prompt_tokens":  1457,
+                                         "completion_tokens":  108,
+                                         "total_tokens":  1565
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:40.596792+00:00"
+}

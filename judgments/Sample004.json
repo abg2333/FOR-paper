@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample004",
+    "truth":  {
+                  "sample_id":  "Sample004",
+                  "track":  "correctness",
+                  "label":  "SQL_SYNTAX_ERROR",
+                  "expected":  "The UPDATE statement is missing a comma between the name and pass assignments."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  true,
+                                        "reason":  "The report explicitly identifies the missing comma between \u0027name = ?\u0027 and \u0027pass = ?\u0027 in the UPDATE statement, which matches the target defect description."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "The report lists the missing comma as the primary issue and provides a corrected SQL string with the comma added, correctly addressing the target defect."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "The report clearly states the missing comma between column assignments and provides a repair strategy and corrected code that inserts the comma, matching the target defect."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\n  \"zero_shot\": {\n    \"detected\": true,\n    \"reason\": \"The report explicitly identifies the missing comma between \u0027name = ?\u0027 and \u0027pass = ?\u0027 in the UPDATE statement, which matches the target defect description.\"\n  },\n  \"single_step\": {\n    \"detected\": true,\n    \"reason\": \"The report lists the missing comma as the primary issue and provides a corrected SQL string with the comma added, correctly addressing the target defect.\"\n  },\n  \"three_stage\": {\n    \"detected\": true,\n    \"reason\": \"The report clearly states the missing comma between column assignments and provides a repair strategy and corrected code that inserts the comma, matching the target defect.\"\n  }\n}",
+                           "latency_seconds":  2.142,
+                           "usage":  {
+                                         "prompt_tokens":  1418,
+                                         "completion_tokens":  150,
+                                         "total_tokens":  1568
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:03.589236+00:00"
+}

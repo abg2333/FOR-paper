@@ -1,0 +1,36 @@
+﻿{
+    "sample_id":  "Sample029",
+    "truth":  {
+                  "sample_id":  "Sample029",
+                  "track":  "security",
+                  "label":  "MISSING_CSRF_PROTECTION",
+                  "expected":  "The login form contains no visible anti-CSRF token; server-side Origin or token validation must also be checked before making a definitive finding.",
+                  "context_limited":  true
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  false,
+                                        "reason":  "The report focuses on missing HTTPS and plaintext password transmission, but does not mention CSRF protection at all. The target defect is MISSING_CSRF_PROTECTION, and the report fails to identify it."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "The report explicitly lists \u0027表单缺少CSRF令牌保护，易受跨站请求伪造攻击\u0027 (the form lacks CSRF token protection, vulnerable to CSRF attacks) as issue #2, and the corrected code includes a hidden CSRF token field. This correctly identifies the target defect with a technically sound explanation."
+                                      },
+                      "three_stage":  {
+                                          "detected":  false,
+                                          "reason":  "The report focuses on missing client-side input validation and does not mention CSRF protection at all. The target defect is MISSING_CSRF_PROTECTION, and the report fails to identify it."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\n  \"zero_shot\": {\n    \"detected\": false,\n    \"reason\": \"The report focuses on missing HTTPS and plaintext password transmission, but does not mention CSRF protection at all. The target defect is MISSING_CSRF_PROTECTION, and the report fails to identify it.\"\n  },\n  \"single_step\": {\n    \"detected\": true,\n    \"reason\": \"The report explicitly lists \u0027表单缺少CSRF令牌保护，易受跨站请求伪造攻击\u0027 (the form lacks CSRF token protection, vulnerable to CSRF attacks) as issue #2, and the corrected code includes a hidden CSRF token field. This correctly identifies the target defect with a technically sound explanation.\"\n  },\n  \"three_stage\": {\n    \"detected\": false,\n    \"reason\": \"The report focuses on missing client-side input validation and does not mention CSRF protection at all. The target defect is MISSING_CSRF_PROTECTION, and the report fails to identify it.\"\n  }\n}",
+                           "latency_seconds":  2.347,
+                           "usage":  {
+                                         "prompt_tokens":  2915,
+                                         "completion_tokens":  211,
+                                         "total_tokens":  3126
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:58.801068+00:00"
+}

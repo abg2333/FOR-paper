@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample003",
+    "truth":  {
+                  "sample_id":  "Sample003",
+                  "track":  "correctness",
+                  "label":  "RESOURCE_LEAK",
+                  "expected":  "Database resources acquired by selectAll are not closed."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  false,
+                                        "reason":  "The report focuses on SQL injection vulnerability and use of Statement vs PreparedStatement, but does not identify the resource leak (unclosed Connection, Statement, ResultSet) as the primary issue. It mentions \u0027resource leak\u0027 only in passing as a secondary issue in the single-step report, not in zero_shot."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "The report explicitly lists \u0027Resource leak: Connection, Statement, and ResultSet are not closed\u0027 as an issue and recommends using try-with-resources to fix it. This correctly identifies the target defect with a technically sound explanation."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "The report clearly identifies the resource leak as the primary issue, explains that Connection, Statement, and ResultSet are never closed, and provides a repair strategy using try-with-resources. The explanation is technically correct and matches the target defect."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\"zero_shot\":{\"detected\":false,\"reason\":\"The report focuses on SQL injection vulnerability and use of Statement vs PreparedStatement, but does not identify the resource leak (unclosed Connection, Statement, ResultSet) as the primary issue. It mentions \u0027resource leak\u0027 only in passing as a secondary issue in the single-step report, not in zero_shot.\"},\"single_step\":{\"detected\":true,\"reason\":\"The report explicitly lists \u0027Resource leak: Connection, Statement, and ResultSet are not closed\u0027 as an issue and recommends using try-with-resources to fix it. This correctly identifies the target defect with a technically sound explanation.\"},\"three_stage\":{\"detected\":true,\"reason\":\"The report clearly identifies the resource leak as the primary issue, explains that Connection, Statement, and ResultSet are never closed, and provides a repair strategy using try-with-resources. The explanation is technically correct and matches the target defect.\"}}",
+                           "latency_seconds":  2.642,
+                           "usage":  {
+                                         "prompt_tokens":  1789,
+                                         "completion_tokens":  192,
+                                         "total_tokens":  1981
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:01.441320+00:00"
+}

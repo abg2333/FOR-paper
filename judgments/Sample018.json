@@ -1,0 +1,35 @@
+﻿{
+    "sample_id":  "Sample018",
+    "truth":  {
+                  "sample_id":  "Sample018",
+                  "track":  "security",
+                  "label":  "REFLECTED_XSS",
+                  "expected":  "banji_name is written into an HTML response without context-appropriate output encoding."
+              },
+    "decisions":  {
+                      "zero_shot":  {
+                                        "detected":  true,
+                                        "reason":  "Correctly identifies reflected XSS, points to the exact vulnerable line, and recommends proper HTML encoding."
+                                    },
+                      "single_step":  {
+                                          "detected":  true,
+                                          "reason":  "Correctly identifies XSS vulnerability, explains root cause, and provides a corrected code with HTML escaping."
+                                      },
+                      "three_stage":  {
+                                          "detected":  true,
+                                          "reason":  "Correctly identifies reflected XSS, provides evidence, and suggests proper HTML encoding using OWASP Java Encoder."
+                                      }
+                  },
+    "judge_response":  {
+                           "content":  "{\"zero_shot\":{\"detected\":true,\"reason\":\"Correctly identifies reflected XSS, points to the exact vulnerable line, and recommends proper HTML encoding.\"},\"single_step\":{\"detected\":true,\"reason\":\"Correctly identifies XSS vulnerability, explains root cause, and provides a corrected code with HTML escaping.\"},\"three_stage\":{\"detected\":true,\"reason\":\"Correctly identifies reflected XSS, provides evidence, and suggests proper HTML encoding using OWASP Java Encoder.\"}}",
+                           "latency_seconds":  1.866,
+                           "usage":  {
+                                         "prompt_tokens":  1992,
+                                         "completion_tokens":  101,
+                                         "total_tokens":  2093
+                                     },
+                           "model":  "deepseek-chat"
+                       },
+    "parse_error":  null,
+    "created_at":  "2026-07-13T02:13:35.115765+00:00"
+}
